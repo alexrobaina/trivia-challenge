@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import StoreContext from 'Context/StoreContext';
+import RootStore from 'stores/RootStore';
+import Home from 'views/Home';
+import Questions from 'views/Questions';
+import { QUESTIONS, HOME, FINISH } from 'routing/routes';
+import Finish from 'views/Finish';
+import './App.module.scss';
 
-function App() {
+const rootStore = new RootStore();
+
+const navegation = [
+  { path: HOME, component: Home },
+  { path: QUESTIONS, component: Questions },
+  { path: FINISH, component: Finish },
+];
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StoreContext.Provider value={rootStore}>
+      <Router>
+        <Switch>
+          {navegation.map((nav) => {
+            return (
+              <Route key={nav.path} exact path={nav.path} component={nav.component} />
+            );
+          })}
+        </Switch>
+      </Router>
+    </StoreContext.Provider>
   );
-}
+};
 
 export default App;

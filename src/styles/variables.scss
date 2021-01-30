@@ -1,0 +1,37 @@
+:root {
+  // Fonts
+  --main-font: 'Fira Sans', sans-serif;
+
+  // Body
+  --Background-body: #012a4a;
+
+  // colors
+  --primary-color: var(--white);
+  --primary-hover: #1db4d8;
+  --text-primary-color: ##012a4a;
+
+  --secundary-color: #012a4a;
+
+  --white: #fff;
+  --black: #000;
+
+  //text
+  --title: var(--primary-color);
+  --color-text: #a1ffff;
+  --color-text-light: #ffffff;
+
+  // error
+  --errors: rgb(206, 0, 0);
+
+  // warning
+  --warning: #fdd835;
+
+  //navbar
+  --navbar: var(--background-secundary);
+
+  // Menu simple
+  --background-card-menu: var(--Background-body);
+
+  //
+  --transparent: #ffffff;
+}
