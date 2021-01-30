@@ -24,3 +24,16 @@
   color: var(--color-text-light);
   font-size: 20px;
 }
+
+.scoredContainer {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.scoredNumber {
+  margin-left: 10px;
+  color: var(--color-text-light);
+  display: flex;
+  padding: 5px;
+}

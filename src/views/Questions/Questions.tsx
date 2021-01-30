@@ -82,7 +82,7 @@ const Questions = () => {
   return (
     <Layout>
       <CardContainer>
-        <Title size={40} mTop={-10} text="Trivia Challenge" />
+        <Title size={20} mTop={-10} text="Trivia Challenge" />
         <div className={styles.wrapperCard}>
           <motion.div
             initial="hidden"

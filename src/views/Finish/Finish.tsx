@@ -29,10 +29,18 @@ const Finish = () => {
   return (
     <Layout>
       <CardContainer>
-        <Title text={`Great! ${questionStore.name.value}`} />
-        <Text bold size={15} text="You scored is: " />
-        <div>{questionStore.badAnswer}</div>
-        <div>{questionStore.goodAnswer}</div>
+        <Title size={40} text={`Great! ${questionStore.name.value}`} />
+        <div className={styles.scoredContainer}>
+          <Text text="You scored is: " />
+          <div className={styles.scoredNumber}>
+            <span>{questionStore.getGoodAnswer}</span>
+            <BiCheck size={23} />
+          </div>
+          <div className={styles.scoredNumber}>
+            <span>{questionStore.getBadAnswer}</span>
+            <IoMdClose size={23} />
+          </div>
+        </div>
         {questionStore.answers.map((answer) => {
           return (
             <motion.div
