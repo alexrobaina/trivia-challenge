@@ -4,15 +4,26 @@ import styles from './title.module.scss';
 
 interface Props {
   text: string;
-  mTop?: number;
   size?: number;
+  marginTop?: number;
+  lineHeight?: number;
   secundary?: boolean;
 }
 
-const Title: FC<Props> = ({ text, mTop = 0, size = '', secundary = false }) => {
+const Title: FC<Props> = ({
+  text,
+  size = '',
+  marginTop = 0,
+  lineHeight = '',
+  secundary = false,
+}) => {
   return (
     <div
-      style={{ marginTop: `${mTop}px`, fontSize: `${size}px` }}
+      style={{
+        fontSize: `${size}px`,
+        marginTop: `${marginTop}px`,
+        lineHeight: `${lineHeight}px`,
+      }}
       className={c(styles.title, secundary && styles.secundary)}
     >
       {text}

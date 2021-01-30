@@ -9,7 +9,7 @@
   --primary-color: var(--white);
   --primary-hover: #1db4d8;
   --text-primary-color: ##012a4a;
-
+  --is-correct: #43a047;
   --secundary-color: #012a4a;
 
   --white: #fff;
@@ -21,17 +21,8 @@
   --color-text-light: #ffffff;
 
   // error
-  --errors: rgb(206, 0, 0);
+  --errors: #d32f2f;
 
   // warning
   --warning: #fdd835;
-
-  //navbar
-  --navbar: var(--background-secundary);
-
-  // Menu simple
-  --background-card-menu: var(--Background-body);
-
-  //
-  --transparent: #ffffff;
 }

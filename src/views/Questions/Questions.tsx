@@ -82,7 +82,7 @@ const Questions = () => {
   return (
     <Layout>
       <CardContainer>
-        <Title size={20} mTop={-10} text="Trivia Challenge" />
+        <Title lineHeight={50} size={40} marginTop={-10} text="Trivia Challenge" />
         <div className={styles.wrapperCard}>
           <motion.div
             initial="hidden"
@@ -93,9 +93,9 @@ const Questions = () => {
           >
             <QuestionCard>
               <Title secundary text={questions[nextQuestion - 1]?.category} />
-              <Text mTop={10} bold text={questions[nextQuestion - 1]?.question} />
+              <Text marginTop={10} bold text={questions[nextQuestion - 1]?.question} />
               <div className={styles.countQuestions}>
-                <Text size={16} text={pagination()} mTop={10} />
+                <Text size={16} text={pagination()} marginTop={10} />
               </div>
             </QuestionCard>
           </motion.div>

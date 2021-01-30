@@ -19,10 +19,10 @@ const Home = () => {
     <Layout>
       <CardContainer>
         <Title text="Welcome to the Trivia Challenge!" />
-        <Text mTop={40} text="You will be presented with 10" />
+        <Text marginTop={40} text="You will be presented with 10" />
         <Text text="True or False questions." />
-        <Text mTop={40} bold text="Can you score 100%?" />
-        <Button onClick={goToBegin} small mTop={50} text="BEGIN" />
+        <Text marginTop={40} bold text="Can you score 100%?" />
+        <Button onClick={goToBegin} small marginTop={50} text="BEGIN" />
       </CardContainer>
     </Layout>
   );
