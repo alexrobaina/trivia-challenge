@@ -1,26 +1,12 @@
-.answerdCardContainer {
-  margin-top: 30px;
+.scoredContainer {
+  margin-top: 20px;
   display: flex;
-  justify-content: center;
-  background-color: green;
-  width: 100%;
-  padding: 10px;
-  height: auto;
-  border-radius: 8px;
-  padding: 22px;
-  color: var(--color-text-light);
-
-  &.incorrectAnswer {
-    background-color: red;
-  }
+  align-items: center;
 }
 
-.icon {
-  margin-right: 14px;
-}
-
-.answerText {
-  padding: 20px;
+.scoredNumber {
+  margin-left: 10px;
   color: var(--color-text-light);
-  font-size: 20px;
+  display: flex;
+  padding: 5px;
 }

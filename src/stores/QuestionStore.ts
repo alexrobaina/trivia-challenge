@@ -115,6 +115,14 @@ class QuestionStore implements IQuestionStore {
     return this.nextQuestion - 1;
   }
 
+  get getBadAnswer() {
+    return this.badAnswer;
+  }
+
+  get getGoodAnswer() {
+    return this.goodAnswer;
+  }
+
   // ===================
   // VALIDATIONS
   // ===================

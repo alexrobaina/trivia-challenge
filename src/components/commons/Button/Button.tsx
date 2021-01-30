@@ -4,23 +4,23 @@ import styles from './button.module.scss';
 
 interface Props {
   big?: boolean;
-  mTop?: number;
   text?: string;
   small?: boolean;
   circle?: boolean;
   icon?: ReactChild;
-  secundary?: boolean;
   onClick?: Function;
+  marginTop?: number;
+  secundary?: boolean;
   transparent?: boolean;
 }
 
 const Button: FC<Props> = ({
   onClick,
-  mTop = 0,
   text = '',
   icon = null,
   big = false,
   small = false,
+  marginTop = 0,
   circle = false,
   secundary = false,
   transparent = false,
@@ -41,7 +41,7 @@ const Button: FC<Props> = ({
             secundary && styles.secundary,
             transparent && styles.transparent,
           )}
-          style={{ marginTop: `${mTop}px` }}
+          style={{ marginTop: `${marginTop}px` }}
         >
           {icon}
         </div>
@@ -54,7 +54,7 @@ const Button: FC<Props> = ({
             secundary && styles.secundary,
             transparent && styles.transparent,
           )}
-          style={{ marginTop: `${mTop}px` }}
+          style={{ marginTop: `${marginTop}px` }}
         >
           <div className={styles.content}>
             {icon && <div className={styles.icon}>{icon}</div>}

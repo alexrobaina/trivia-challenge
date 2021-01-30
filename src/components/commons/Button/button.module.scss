@@ -57,6 +57,11 @@
       color: var(--color-icon-and-text);
     }
   }
+
+  @include media-breakpoint-only(xs) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 }
 
 .text {
