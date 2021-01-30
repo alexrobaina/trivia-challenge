@@ -1,0 +1,27 @@
+.containerButton {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 60px;
+}
+
+.number {
+  margin-top: 15px;
+  display: flex;
+  justify-content: flex-end;
+  color: var(--white);
+}
+
+.wrapperCard {
+  height: auto;
+}
+
+.questionCardContainer {
+  margin-top: 50px;
+}
+
+.countQuestions {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: -14px;
+}

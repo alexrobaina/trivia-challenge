@@ -1,0 +1,16 @@
+@import 'styles/mixings.scss';
+
+.text {
+  font-size: var(--main-font);
+  font-size: 20px;
+  color: var(--white);
+  line-height: 25px;
+
+  @include media-breakpoint-only(xs) {
+    font-size: 18px;
+  }
+
+  &.bold {
+    font-weight: 800;
+  }
+}
