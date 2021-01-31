@@ -5,6 +5,7 @@ import Home from 'views/Home';
 import Questions from 'views/Questions';
 import { QUESTIONS, HOME, FINISH } from 'routing/routes';
 import Finish from 'views/Finish';
+import Navbar from 'components/Navbar';
 import './App.module.scss';
 
 const rootStore = new RootStore();
@@ -18,6 +19,7 @@ const navegation = [
 const App = () => {
   return (
     <StoreContext.Provider value={rootStore}>
+      <Navbar />
       <Router>
         <Switch>
           {navegation.map((nav) => {

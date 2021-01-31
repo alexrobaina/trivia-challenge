@@ -21,7 +21,7 @@
     background-color: var(--background-hover);
 
     &.circle {
-      background-color: var(--color-text-light);
+      background-color: var(--background-hover);
       color: var(--background-hover);
     }
   }
@@ -42,8 +42,10 @@
   }
 
   &.circle {
-    width: 45px;
     height: 45px;
+    width: 45px;
+    padding-left: 0;
+    padding-right: 0;
     border-radius: 50%;
   }
 
@@ -61,6 +63,11 @@
   @include media-breakpoint-only(xs) {
     padding-left: 40px;
     padding-right: 40px;
+
+    &.circle {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 }
 
@@ -91,4 +98,9 @@
 .icon {
   margin-top: 5px;
   padding: 10px 10px 10px 0px;
+
+  &.circle {
+    color: var(--white);
+    padding: 0;
+  }
 }

@@ -1,12 +1,12 @@
 import { useEffect, useCallback, useState, useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import Layout from 'components/commons/Layout';
+import { useHistory } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import StoreContext from 'Context/StoreContext';
 import Title from 'components/commons/Title';
 import Text from 'components/commons/Text';
 import { FINISH } from 'routing/routes';
-import { useHistory } from 'react-router-dom';
 import Button from 'components/commons/Button';
 import CardContainer from 'components/commons/CardContainer';
 import QuestionCard from 'components/commons/QuestionCard';
@@ -51,7 +51,7 @@ const Questions = () => {
     hidden: { opacity: 0 },
   };
 
-  const { totalQuestions, questions, loading, nextQuestion } = questionStore;
+  const { totalQuestions, questions, loading, nextQuestion, question } = questionStore;
 
   useEffect(() => {
     if (!cardAnimation) {
@@ -69,6 +69,7 @@ const Questions = () => {
       questionStore.resetPositionQuestion();
       history.push(FINISH);
     }
+    questionStore.formatedQuestion();
   }, [nextQuestion]);
 
   const pagination = () => {
@@ -92,8 +93,8 @@ const Questions = () => {
             variants={cardAnimation ? animateIn : animateOut}
           >
             <QuestionCard>
-              <Title secundary text={questions[nextQuestion - 1]?.category} />
-              <Text marginTop={10} bold text={questions[nextQuestion - 1]?.question} />
+              <Title size={28} text={questions[nextQuestion - 1]?.category} />
+              <Text marginTop={16} bold text={question} />
               <div className={styles.countQuestions}>
                 <Text size={16} text={pagination()} marginTop={10} />
               </div>

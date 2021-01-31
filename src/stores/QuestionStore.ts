@@ -5,6 +5,7 @@ import InputStore from './InputStore';
 interface IQuestionStore {
   name?: string;
   loading: boolean;
+  question: string;
   badAnswer: number;
   goodAnswer: number;
   nextQuestion: string;
@@ -18,6 +19,7 @@ class QuestionStore implements IQuestionStore {
   name;
   answers;
   loading;
+  question;
   questions;
   badAnswer;
   goodAnswer;
@@ -26,6 +28,7 @@ class QuestionStore implements IQuestionStore {
   questionService;
   constructor() {
     this.answers = [];
+    this.question = '';
     this.badAnswer = 0;
     this.questions = [];
     this.goodAnswer = 0;
@@ -35,6 +38,7 @@ class QuestionStore implements IQuestionStore {
     this.questionService = null;
     this.name = new InputStore();
 
+    this.name.setValue('Alex');
     makeAutoObservable(this);
 
     this.questionService = new QuestionService();
@@ -56,6 +60,7 @@ class QuestionStore implements IQuestionStore {
         this.loading = false;
         this.questions = response;
         this.totalQuestions = this.questions.length;
+        this.formatedQuestion();
       });
     } catch (e) {
       runInAction(() => {
@@ -72,7 +77,7 @@ class QuestionStore implements IQuestionStore {
   setAnswer(answer, userAnswer) {
     const data = {
       correctAnswer: answer.correctAnswer,
-      question: answer.question,
+      question: answer.question.replace(/&quot;/g, '"').replace(/&#039;/g, '"'),
       userAnswer,
       isCorrect: answer.correctAnswer[0].toLowerCase() === userAnswer,
     };
@@ -107,6 +112,13 @@ class QuestionStore implements IQuestionStore {
     this.answers = [];
   }
 
+  formatedQuestion() {
+    this.question = this.questions[this.nextQuestion - 1]?.question
+      .replace(/&quot;/g, '"')
+      .replace(/&#039;/g, "'")
+      .replace(/&ocirc;/g, 'ô')
+      .replace(/&rdquo;/g, '"');
+  }
   // ===================
   // GETTERS
   // ===================

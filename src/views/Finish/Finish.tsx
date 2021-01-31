@@ -32,12 +32,16 @@ const Finish = () => {
         <div className={styles.scoredContainer}>
           <Text text="You scored is: " />
           <div className={styles.scoredNumber}>
-            <span>{questionStore.getGoodAnswer}</span>
-            <BiCheck size={23} />
+            <div>{questionStore.getGoodAnswer}</div>
+            <div className={styles.goodAnswer}>
+              <BiCheck size={23} />
+            </div>
           </div>
           <div className={styles.scoredNumber}>
-            <span>{questionStore.getBadAnswer}</span>
-            <IoMdClose size={23} />
+            <div>{questionStore.getBadAnswer}</div>
+            <div className={styles.badAnswer}>
+              <IoMdClose size={20} />
+            </div>
           </div>
         </div>
         {questionStore.answers.map((answer) => {
