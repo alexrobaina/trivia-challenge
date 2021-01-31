@@ -25,7 +25,7 @@ const Finish = () => {
     questionStore.triviaResults();
     questionStore.calculateScored();
   }, []);
-  console.log(questionStore.scored);
+
   return (
     <Layout>
       <CardContainer>
