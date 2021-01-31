@@ -36,20 +36,19 @@ const Button: FC<Props> = ({
           onClick={click}
           className={c(
             styles.button,
-            big && styles.big,
             circle && styles.circle,
             secundary && styles.secundary,
             transparent && styles.transparent,
           )}
-          style={{ marginTop: `${marginTop}px` }}
         >
-          {icon}
+          <div className={c(styles.icon, circle && styles.circle)}>{icon}</div>
         </div>
       ) : (
         <div
           onClick={click}
           className={c(
             styles.button,
+            big && styles.big,
             small && styles.small,
             secundary && styles.secundary,
             transparent && styles.transparent,

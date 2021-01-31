@@ -7,8 +7,9 @@
   letter-spacing: 1px;
   font-size: 25px;
   line-height: 30px;
+  width: fit-content;
 
   &.secundary {
-    color: var(--secundary-color);
+    color: var(--text-secundary-color);
   }
 }

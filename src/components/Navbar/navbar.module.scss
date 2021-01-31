@@ -1,0 +1,30 @@
+.navbar {
+  z-index: 10;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  background-color: var(--navbar);
+  align-items: center;
+  width: 100%;
+  padding: 16px 16px 14px 16px;
+  height: 60px;
+}
+
+.col {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.user {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.nameContainer {
+  text-transform: capitalize;
+  margin-right: 15px;
+}

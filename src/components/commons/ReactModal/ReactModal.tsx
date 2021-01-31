@@ -1,14 +1,15 @@
 import { FC, ReactNode } from 'react';
+import { observer } from 'mobx-react-lite';
 import { motion } from 'framer-motion';
 import { GrClose } from 'react-icons/gr';
 import Modal from 'react-modal';
-import styles from './popUp.module.scss';
+import styles from './reactModal.module.scss';
 
 interface Props {
   title: string;
   children: ReactNode;
   modalIsOpen: boolean;
-  closeModal?(): void;
+  closeModal?: () => void;
 }
 
 const customStyles = {
@@ -27,7 +28,7 @@ const customStyles = {
   },
 };
 
-const PopUp: FC<Props> = ({ title, children, closeModal, modalIsOpen }) => {
+const ReactModal: FC<Props> = ({ title, children, closeModal, modalIsOpen }) => {
   const variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
@@ -51,7 +52,12 @@ const PopUp: FC<Props> = ({ title, children, closeModal, modalIsOpen }) => {
           <div className={styles.modalContainer}>
             <div className={styles.header}>
               <div className={styles.title}>{title}</div>
-              <div className={styles.close} role="button" onClick={closeModal}>
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={closeModal}
+                className={styles.close}
+              >
                 <GrClose size={20} />
               </div>
             </div>
@@ -63,4 +69,4 @@ const PopUp: FC<Props> = ({ title, children, closeModal, modalIsOpen }) => {
   );
 };
 
-export default PopUp;
+export default observer(ReactModal);
