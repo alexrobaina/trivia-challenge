@@ -23,29 +23,43 @@ const Finish = () => {
 
   useEffect(() => {
     questionStore.triviaResults();
+    questionStore.calculateScored();
   }, []);
 
   return (
     <Layout>
       <CardContainer>
-        <Title size={40} text={`Great! ${questionStore.name.value}`} />
+        <div className={styles.titleContainar}>
+          <Title
+            size={40}
+            lineHeight={48}
+            text={`Great! ${questionStore.username.value}`}
+          />
+        </div>
         <div className={styles.scoredContainer}>
-          <Text text="You scored is: " />
-          <div className={styles.scoredNumber}>
-            <div>{questionStore.getGoodAnswer}</div>
+          <Text text={`You scored is: ${questionStore.scored}%`} />
+          <div className={styles.countAnswers}>
+            <Text marginTop={10} text="Result of the questions: " />
             <div className={styles.goodAnswer}>
+              {questionStore.getGoodAnswer}
               <BiCheck size={23} />
             </div>
-          </div>
-          <div className={styles.scoredNumber}>
-            <div>{questionStore.getBadAnswer}</div>
-            <div className={styles.badAnswer}>
-              <IoMdClose size={20} />
+            <div className={styles.countAnswers}>
+              <div className={styles.badAnswer}>
+                {questionStore.getBadAnswer}
+                <IoMdClose size={20} />
+              </div>
             </div>
           </div>
         </div>
         {questionStore.answers.map((answer) => {
-          return <AnswerCard question={answer.question} isCorrect={answer.isCorrect} />;
+          return (
+            <AnswerCard
+              key={answer.question}
+              question={answer.question}
+              isCorrect={answer.isCorrect}
+            />
+          );
         })}
         <Button onClick={goToBegin} small marginTop={50} text="PLAY AGAIN" />
       </CardContainer>

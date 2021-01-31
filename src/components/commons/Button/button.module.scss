@@ -54,8 +54,11 @@
   }
 
   &.secundary {
+    background-color: var(--secundary-color);
+    color: var(--white);
+
     &:hover {
-      background-color: var(--color-icon-and-text-hover);
+      background-color: var(--primary-hover);
       color: var(--color-icon-and-text);
     }
   }

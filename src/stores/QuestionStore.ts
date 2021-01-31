@@ -3,9 +3,10 @@ import QuestionService from 'Services/QuestionService';
 import InputStore from './InputStore';
 
 interface IQuestionStore {
-  name?: string;
+  scored: string;
   loading: boolean;
   question: string;
+  username?: string;
   badAnswer: number;
   goodAnswer: number;
   nextQuestion: string;
@@ -16,9 +17,10 @@ interface IQuestionStore {
 }
 
 class QuestionStore implements IQuestionStore {
-  name;
+  scored;
   answers;
   loading;
+  username;
   question;
   questions;
   badAnswer;
@@ -27,6 +29,7 @@ class QuestionStore implements IQuestionStore {
   totalQuestions;
   questionService;
   constructor() {
+    this.scored = 0;
     this.answers = [];
     this.question = '';
     this.badAnswer = 0;
@@ -36,9 +39,8 @@ class QuestionStore implements IQuestionStore {
     this.nextQuestion = 0;
     this.totalQuestions = 0;
     this.questionService = null;
-    this.name = new InputStore();
+    this.username = new InputStore();
 
-    this.name.setValue('Alex');
     makeAutoObservable(this);
 
     this.questionService = new QuestionService();
@@ -77,7 +79,9 @@ class QuestionStore implements IQuestionStore {
   setAnswer(answer, userAnswer) {
     const data = {
       correctAnswer: answer.correctAnswer,
-      question: answer.question.replace(/&quot;/g, '"').replace(/&#039;/g, '"'),
+      question: this.formatedQuestion(
+        answer.question.replace(/&quot;/g, '"').replace(/&#039;/g, '"'),
+      ),
       userAnswer,
       isCorrect: answer.correctAnswer[0].toLowerCase() === userAnswer,
     };
@@ -112,12 +116,35 @@ class QuestionStore implements IQuestionStore {
     this.answers = [];
   }
 
-  formatedQuestion() {
-    this.question = this.questions[this.nextQuestion - 1]?.question
-      .replace(/&quot;/g, '"')
-      .replace(/&#039;/g, "'")
-      .replace(/&ocirc;/g, 'ô')
-      .replace(/&rdquo;/g, '"');
+  formatedQuestion(question = null) {
+    let questionFormatted;
+    if (question) {
+      questionFormatted = question
+        .replace(/&quot;/g, '"')
+        .replace(/&#039;/g, "'")
+        .replace(/&ocirc;/g, 'ô')
+        .replace(/&rdquo;/g, '"');
+    } else {
+      questionFormatted = this.questions[this.nextQuestion - 1]?.question
+        .replace(/&quot;/g, '"')
+        .replace(/&#039;/g, "'")
+        .replace(/&ocirc;/g, 'ô')
+        .replace(/&rdquo;/g, '"');
+    }
+    this.question = questionFormatted;
+    return questionFormatted;
+  }
+
+  setUsername(username) {
+    this.username.setValue(username);
+  }
+
+  resetUsername() {
+    this.username.setValue('');
+  }
+
+  calculateScored() {
+    this.scored = Math.ceil((this.totalQuestions / 100) * this.goodAnswer);
   }
   // ===================
   // GETTERS
@@ -140,18 +167,24 @@ class QuestionStore implements IQuestionStore {
   // ===================
 
   resetErrors() {
-    this.name.setError(false);
+    this.username.setError(false);
   }
 
-  validateLogin() {
-    let isError = false;
+  validations() {
+    this.resetErrors();
+    let isDirty = true;
 
-    if (this.name.value === '') {
-      isError = true;
-      this.name.setError(true, 'You username is requerid xD');
+    if (this.username.value === '') {
+      isDirty = false;
+      this.username.setError(true, 'The username is requerid');
     }
 
-    return isError;
+    if (this.username.value.length > 20) {
+      isDirty = false;
+      this.username.setError(true, 'Sorry is too long. add only 20 letters');
+    }
+
+    return isDirty;
   }
 }
 

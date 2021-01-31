@@ -1,7 +1,8 @@
 import { useContext, useCallback } from 'react';
 import { BiHomeHeart } from 'react-icons/bi';
-import { useHistory } from 'react-router-dom';
 import { RiLogoutBoxRFill } from 'react-icons/ri';
+import { observer } from 'mobx-react-lite';
+import { useHistory } from 'react-router-dom';
 import Text from 'components/commons/Text';
 import StoreContext from 'Context/StoreContext';
 import Button from 'components/commons/Button';
@@ -17,6 +18,11 @@ const Navbar = () => {
     history.push(HOME);
   }, []);
 
+  const logout = useCallback(() => {
+    questionStore.resetUsername();
+    history.push(HOME);
+  }, []);
+
   return (
     <div className={styles.navbar}>
       <div className={styles.col}>
@@ -28,11 +34,18 @@ const Navbar = () => {
             icon={<BiHomeHeart size={25} />}
           />
         </div>
-        {questionStore.name.value && (
+        {questionStore.username.value && (
           <>
             <div className={styles.user}>
-              <Text size={15} text={questionStore.name.value} />
-              <Button transparent circle icon={<RiLogoutBoxRFill size={25} />} />
+              <div className={styles.nameContainer}>
+                <Text bold size={15} text={questionStore.username.value} />
+              </div>
+              <Button
+                circle
+                transparent
+                onClick={logout}
+                icon={<RiLogoutBoxRFill size={25} />}
+              />
             </div>
           </>
         )}
@@ -41,4 +54,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default observer(Navbar);
