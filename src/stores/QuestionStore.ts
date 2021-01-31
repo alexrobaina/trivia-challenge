@@ -98,6 +98,10 @@ class QuestionStore implements IQuestionStore {
       }
     });
   }
+  calculateScored() {
+    const porcentage = (100 / this.totalQuestions) * this.goodAnswer;
+    this.scored = Math.abs(porcentage);
+  }
 
   resetTriviaResults() {
     this.badAnswer = 0;
@@ -143,9 +147,6 @@ class QuestionStore implements IQuestionStore {
     this.username.setValue('');
   }
 
-  calculateScored() {
-    this.scored = Math.ceil((this.totalQuestions / 100) * this.goodAnswer);
-  }
   // ===================
   // GETTERS
   // ===================
