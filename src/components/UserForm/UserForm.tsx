@@ -19,7 +19,7 @@ const UserForm: FC<Props> = ({ handleUsername, startGame, username }) => {
           label="Username"
           inputStore={username}
           onChange={handleUsername}
-          placeholder="Alex Robaina"
+          placeholder="Write your username..."
         />
       </div>
       <div className={styles.buttonUsername}>

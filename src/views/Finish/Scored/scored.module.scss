@@ -1,0 +1,35 @@
+.scoredContainer {
+  flex-direction: column;
+  margin-top: 20px;
+  display: flex;
+}
+
+.countAnswers {
+  display: flex;
+  align-items: center;
+  color: var(--color-text-light);
+}
+
+.badAnswer {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  color: var(--errors);
+}
+
+.goodAnswer {
+  margin-top: 10px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  color: var(--is-correct);
+}
+
+.inputUsername {
+  margin-top: 25px;
+}
+
+.buttonUsername {
+  margin-top: 50px;
+}

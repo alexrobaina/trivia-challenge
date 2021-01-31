@@ -8,14 +8,15 @@ const Loading = () => {
   };
 
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={variants}
-      className={styles.loading}
-    >
-      calgando sdghsdsdefsh zsghsd
-    </motion.div>
+    <div className={styles.bodyLoading}>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={variants}
+        className={styles.loading}
+        transition={{ ease: 'easeOut' }}
+      />
+    </div>
   );
 };
 

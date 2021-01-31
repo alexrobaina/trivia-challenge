@@ -11,6 +11,7 @@ import { QUESTIONS } from 'routing/routes';
 import CardContainer from 'components/commons/CardContainer';
 import AnswerCard from 'components/commons/AnswerCard';
 import styles from './finish.module.scss';
+import Scored from './Scored';
 
 const Finish = () => {
   const history = useHistory();
@@ -36,22 +37,11 @@ const Finish = () => {
             text={`Great! ${questionStore.username.value}`}
           />
         </div>
-        <div className={styles.scoredContainer}>
-          <Text text={`You scored is: ${questionStore.scored}%`} />
-          <div className={styles.countAnswers}>
-            <Text marginTop={10} text="Result of the questions: " />
-            <div className={styles.goodAnswer}>
-              {questionStore.getGoodAnswer}
-              <BiCheck size={23} />
-            </div>
-            <div className={styles.countAnswers}>
-              <div className={styles.badAnswer}>
-                {questionStore.getBadAnswer}
-                <IoMdClose size={20} />
-              </div>
-            </div>
-          </div>
-        </div>
+        <Scored
+          scored={questionStore.scored}
+          getGoodAnswer={questionStore.getGoodAnswer}
+          getBadAnswer={questionStore.getGoodAnswer}
+        />
         {questionStore.answers.map((answer) => {
           return (
             <AnswerCard
