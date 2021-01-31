@@ -17,7 +17,7 @@ const Finish = () => {
   const rootStore = useContext(StoreContext);
   const { questionStore } = rootStore;
 
-  const goToBegin = useCallback(() => {
+  const goToQuestions = useCallback(() => {
     history.push(QUESTIONS);
   }, []);
 
@@ -25,7 +25,7 @@ const Finish = () => {
     questionStore.triviaResults();
     questionStore.calculateScored();
   }, []);
-
+  console.log(questionStore.scored);
   return (
     <Layout>
       <CardContainer>
@@ -61,7 +61,7 @@ const Finish = () => {
             />
           );
         })}
-        <Button onClick={goToBegin} small marginTop={50} text="PLAY AGAIN" />
+        <Button onClick={goToQuestions} small marginTop={50} text="PLAY AGAIN" />
       </CardContainer>
     </Layout>
   );
