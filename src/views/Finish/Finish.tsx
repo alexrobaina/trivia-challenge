@@ -1,9 +1,7 @@
 import { useCallback, useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useHistory } from 'react-router-dom';
-import { BiCheck, IoMdClose } from 'react-icons/all';
 import Title from 'components/commons/Title';
-import Text from 'components/commons/Text';
 import Layout from 'components/commons/Layout';
 import StoreContext from 'Context/StoreContext';
 import Button from 'components/commons/Button';
