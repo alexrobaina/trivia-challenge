@@ -37,8 +37,8 @@ const Finish = () => {
         </div>
         <Scored
           scored={questionStore.scored}
-          getGoodAnswer={questionStore.getGoodAnswer}
-          getBadAnswer={questionStore.getGoodAnswer}
+          getGoodAnswer={questionStore.goodAnswer}
+          getBadAnswer={questionStore.badAnswer}
         />
         {questionStore.answers.map((answer) => {
           return (
