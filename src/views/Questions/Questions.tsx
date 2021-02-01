@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import StoreContext from 'Context/StoreContext';
 import Title from 'components/commons/Title';
 import Text from 'components/commons/Text';
+import Loading from 'components/commons/Loading';
 import { FINISH } from 'routing/routes';
 import Button from 'components/commons/Button';
 import CardContainer from 'components/commons/CardContainer';
@@ -77,7 +78,7 @@ const Questions = () => {
   };
 
   if (loading) {
-    return <div>se ta calgando</div>;
+    return <Loading />;
   }
 
   return (
